@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/popup.css">
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/actions.js"></script>
+	<script type="text/javascript" src="js/popup.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="info">
+			<div class="img">
+				<img src="images/sabesp-128.png" />
+			</div>
+			<div class="text-info">
+				<strong>Última atualização:</strong> <i class="last-update"></i><br />
+				<br />
+				<i>"Tenha consciência, use a água com moderação"</i>
+			</div>
+			<div class="botoes">
+				<div class="ativo"><strong>Situação atual</strong></div>
+				<div><strong>Dias anteriores</strong></div>
+			</div>
+		</div>
+		<hr />
+		<div class="content-place-holder">
+			<div class="place-holder">
+				<div class="manancial template">
+					<div class="percent">{percent}</div>
+					<div class="nome-manancial">{name}</div>
+					<div class="da-glass">
+						<div class="da-water" style="height: 0%"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="graph"></div>
+		<div class="fonte">
+			<hr />
+			<strong>Fonte:</strong> <i>Api SABESP (https://sabesp-api.herokuapp.com/v2)</i>
+		</div>
+	</div>
+	<script src="js/highcharts.js"></script>
+</body>
+</html>

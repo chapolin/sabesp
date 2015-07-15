@@ -1,0 +1,144 @@
+.container {
+	width: 784px;
+	height:400px;
+	font-family:Verdana
+}
+
+.template {
+	display: none
+}
+
+.da-glass {
+	float: left;
+	margin: 10px 10px 10px 25px;
+	width: 80px;
+	height: 200px;
+	background: #C7E2FF;
+	position: relative;
+	box-shadow: inset 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.da-glass:after,.da-glass:before {
+	top: -62px;
+	border-radius: 80px;
+	content: "";
+	position: absolute;
+	width: 80px;
+	height: 120px;
+	background: #C7E2FF;
+	-webkit-transform: rotateX(75deg);
+	/* Chrome, Safari, Opera  */
+	transform: rotateX(75deg);
+}
+
+.da-glass:before {
+	background: #BEDEFC;
+	top: auto;
+	bottom: -60px;
+}
+
+.da-water {
+	width: 80px;
+	position: absolute;
+	bottom: 0;
+	background: #69AEF9;
+	-webkit-transition: height 1s ease;
+}
+
+.da-water:after,.da-water:before {
+	top: -60px;
+	border-radius: 80px;
+	content: "";
+	position: absolute;
+	width: 80px;
+	height: 116px;
+	background: #69AEF9;
+	-webkit-transform: rotateX(75deg);
+	/* Chrome, Safari, Opera  */
+	transform: rotateX(75deg);
+}
+
+.da-water:after {
+	background: #51A4F2;
+}
+
+.da-water:before {
+	top: auto;
+	bottom: -60px;
+	box-shadow: inset -1px -9px 5px rgba(0, 0, 0, 0.3);
+}
+
+.manancial {
+	position: relative;
+	float: left
+}
+
+.percent {
+	width: 126px;
+	margin: 0 0 10px 0;
+	text-align: center;
+	clear: both;
+}
+
+.nome-manancial {
+	width:150px;
+	text-align:center;
+	-webkit-transform: rotate(-90deg);
+	position: absolute;
+	top: 50%;
+	left: -65px
+}
+
+.place-holder{
+	width: 762px;
+	float:left;
+	margin:25px
+}
+
+.info{
+	height:60px
+}
+
+.info .img {float:left}
+.info .img img{
+	width: 50px;
+	height: 50px;
+}
+
+.info .text-info {
+	float:left;
+	margin:0 0 0 10px
+}
+
+.info .botoes{
+	float: right;
+	margin: 10px 0 0 0	
+}
+
+.info .botoes div{
+	margin: 0 10px 0 10px;
+	display: block;
+	float: left;
+	line-height: 30px;
+	text-decoration: none;
+	background: #CCC;
+	padding: 5px;
+	color:#000;
+	border: 1px solid #999;
+    border-radius: 5px;
+    cursor: pointer
+}
+
+.info .botoes div.ativo{background: #FFF}
+
+.fonte {
+	clear: both;
+	text-align: right
+}
+
+#graph{
+	min-width: 800px; 
+	height: auto; 
+	margin: 0 auto;
+	display: none
+}
