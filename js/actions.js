@@ -109,7 +109,7 @@ var today = function() {
 };
 
 var formatDate = function(date) {
-	var day = (date.getDate() < 9 ? "0" : "") + date.getDate(),
+	var day = (date.getDate() <= 9 ? "0" : "") + date.getDate(),
 	month = (date.getMonth() < 9 ? "0" : "") + (date.getMonth() + 1);
 	year = date.getFullYear();
 
