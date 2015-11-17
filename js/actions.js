@@ -46,7 +46,8 @@ var buildGlasses = function(data) {
 
 		$(actualTemplate).find(".manancial").removeClass("template");
 		$(actualTemplate).find(".percent").html(percent + "%");
-		$(actualTemplate).find(".nome-manancial").html(data[i].name);
+		$(actualTemplate).find(".nome-manancial").html(
+			data[i].name + (data[i].name == "Cantareira" ? "( &Iacute;ndice 3 )" : ""));
 		$(actualTemplate).find(".da-water").attr("rel", "manancial-" + (parseInt(i) + 1));
 
 		$(".place-holder").append($(actualTemplate).html());
