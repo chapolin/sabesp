@@ -68,17 +68,15 @@ function handleAjaxErrors(error, origin) {
 	//
 }
 
-function show(title, text, tag) {
+var show = function (title, text, tag) {
 	if (window.Notification) {
 		var notification = new Notification(title, {
-			icon: "images/health-check-48-warning.png",
+			icon: "images/sabesp-128.png",
 			body: text,
 			tag: tag
 		});
-
-		notification.onclose = verifyWhenNotificationClose;
 	}
-}
+};
 
 function verifyWhenNotificationClose(a, b, c) {
 	//console.log(a, b, c);
@@ -97,6 +95,8 @@ Storage.prototype.getAllKeys = function() {
         keys = Object.keys(localStorage);
 
     for (var i = 0; i < keys.length; i++) {
+			if(keys[i] == "mensagemData") continue;
+			
     	archive[keys[i]] = localStorage.getObj(keys[i]);
     }
 
@@ -257,4 +257,20 @@ var buildGraph = function() {
         },
         series: finalData
     });
+};
+
+var getDataFromYesterday = function () {
+	// Trying get yesterday data 
+	var yesterday = new Date();
+	yesterday.setDate(yesterday.getDate() - 1);
+	
+	return localStorage.getObj(formatDate(yesterday));
+};
+
+var getDataFromBeforeYesterday = function() {
+	// Trying get beforeYesterday data
+	var beforeYesterday = new Date();
+	beforeYesterday.setDate(beforeYesterday.getDate() - 2);
+	
+	return localStorage.getObj(formatDate(beforeYesterday));
 };

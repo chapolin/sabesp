@@ -26,6 +26,32 @@ chrome.runtime.onInstalled.addListener(function() {
 chrome.alarms.onAlarm.addListener(function(alarm) {
 	getApiInformations(null, function(data) {
 		if(isConsistent(data)) {
+			var dataYesterday = getDataFromYesterday(), nivelCantareiraOntem = null, 
+			nivelCatareiraAgora = null, mensagemData = localStorage.getItem("mensagemData");
+			
+			for(var a in data) {
+				if(data[a].name == "Cantareira") {
+					nivelCatareiraAgora = data[a].data.volume_armazenado;
+					
+					nivelCatareiraAgora = parseFloat(
+						nivelCatareiraAgora.replace("%", "").replace(",", "."));
+				}
+			}
+			
+			for(var b in dataYesterday) {
+				if(dataYesterday[b].name == "Cantareira") {
+					nivelCantareiraOntem = dataYesterday[b].data.volume_armazenado;
+					nivelCantareiraOntem = parseFloat(
+						nivelCantareiraOntem.replace("%", "").replace(",", "."));
+				}
+			}
+			
+			if(nivelCantareiraOntem < nivelCatareiraAgora && mensagemData != today()) {
+				show("O nível da Cantareira subiu!!!", "De [ " + nivelCantareiraOntem + " ] para [ " + nivelCatareiraAgora + " ]");
+				
+				localStorage.setItem("mensagemData", today());
+			}
+			
 	 	 	localStorage.setObj(today(), data);
 		}
 	});
@@ -36,24 +62,14 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		var data = localStorage.getObj(today());
 		
 		if(data) {
-			sendResponse(data);	
+			sendResponse(data);
 		} else {
-			// Trying get yesterday data 
-			var yesterday = new Date();
-			yesterday.setDate(yesterday.getDate() - 1);
-			
-			data = localStorage.getObj(formatDate(yesterday));
+			data = getDataFromYesterday();
 			
 			if(data) {
 				sendResponse(data);
 			} else {
-				// Trying get beforeYesterday data
-				var beforeYesterday = new Date();
-				beforeYesterday.setDate(beforeYesterday.getDate() - 2);
-				
-				data = localStorage.getObj(formatDate(beforeYesterday));
-				
-				sendResponse(data);
+				sendResponse(getDataFromBeforeYesterday());
 			}
 		}
 	}
