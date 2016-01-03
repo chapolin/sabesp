@@ -34,7 +34,8 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 					nivelCatareiraAgora = data[a].data.volume_armazenado;
 					
 					nivelCatareiraAgora = parseFloat(
-						nivelCatareiraAgora.replace("%", "").replace(",", "."));
+						nivelCatareiraAgora.replace("%", "").replace(",", ".")
+					);
 				}
 			}
 			
@@ -42,11 +43,12 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 				if(dataYesterday[b].name == "Cantareira") {
 					nivelCantareiraOntem = dataYesterday[b].data.volume_armazenado;
 					nivelCantareiraOntem = parseFloat(
-						nivelCantareiraOntem.replace("%", "").replace(",", "."));
+						nivelCantareiraOntem.replace("%", "").replace(",", ".")
+					);
 				}
 			}
 			
-			if(nivelCantareiraOntem < nivelCatareiraAgora && mensagemData != today()) {
+			if(nivelCantareiraOntem && nivelCatareiraAgora && nivelCantareiraOntem < nivelCatareiraAgora && mensagemData != today()) {
 				show("O nível da Cantareira subiu!!!", "De [ " + nivelCantareiraOntem + " ] para [ " + nivelCatareiraAgora + " ]");
 				
 				localStorage.setItem("mensagemData", today());
