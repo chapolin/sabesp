@@ -39,6 +39,7 @@
 
 .da-water {
 	width: 80px;
+	max-height: 100%;
 	position: absolute;
 	bottom: 0;
 	background: #69AEF9;
